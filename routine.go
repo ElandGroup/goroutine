@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"runtime"
 	"time"
+
+	"github.com/okzk/ticker"
 )
 
 //import "sync"
@@ -41,4 +43,11 @@ func Routine3() {
 		}
 		t.Stop()
 	}()
+}
+
+func Routine4() (newTicker *ticker.Ticker) {
+	newTicker = ticker.New(2*time.Second, func(t time.Time) {
+		fmt.Println("Tick at", t)
+	})
+	return
 }
